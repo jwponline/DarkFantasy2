@@ -1,5 +1,6 @@
 package database;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,13 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AccountRegistratie {
+	
+	@Autowired
+	private AccountDao accountDao;
+	@SuppressWarnings("unused")
+	@Autowired
+	private PlayerDao playerDao;
 
 	/**
 	 * Toon een overzicht van alle accounts
 	 */
 	@RequestMapping("/")
 	public String overzicht(Model model) {
-		model.addAttribute("accounts", AccountDao.allAccounts());
+		model.addAttribute("accounts", accountDao.allAccounts());
 		return "frontpage";
 	}
 	
@@ -30,7 +37,7 @@ public class AccountRegistratie {
 			// id is geen getal? error 404
 			return null;
 		}
-		Account account = AccountDao.findAccount(key);
+		Account account = accountDao.findAccount(key);
 		if(account == null){
 			// geen account met gegeven id? error 404
 			return null;
@@ -55,7 +62,7 @@ public class AccountRegistratie {
 			return null;
 		}
 
-		AccountDao.remove(key);
+		accountDao.remove(key);
 		return "redirect:/";
 	}
 	

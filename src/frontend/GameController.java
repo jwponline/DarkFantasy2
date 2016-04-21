@@ -3,6 +3,7 @@ package frontend;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,9 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import characterclasses.Player;
 import database.Account;
 import database.AccountDao;
+import database.PlayerDao;
 
 @Controller
 public class GameController {
+	
+	@Autowired
+	private AccountDao accountDao;
+	@Autowired
+	private PlayerDao playerDao;
 	
 	@RequestMapping (value="/", method=RequestMethod.GET)
 	public String DarkFantasyNew(Model model, HttpSession s){
@@ -62,12 +69,12 @@ public class GameController {
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String nieuw(@ModelAttribute("Account") @Valid Account account, BindingResult result){
-		if(AccountDao.findAccount(new String(account.getUsername()))!=null){
+		if(accountDao.findAccount(new String(account.getUsername()))!=null){
 			result.addError(new FieldError("account", "username", "Username taken. Please choose a new username."));
 		}
 		
 		if (!result.hasErrors()) {
-			AccountDao.createAccount(account.getUsername(), account.getPassword());
+			accountDao.createAccount(account.getUsername(), account.getPassword());
 			return "redirect:/charactercreation";
 		} else {
 			System.out.println("test");
@@ -79,13 +86,14 @@ public class GameController {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String login(@ModelAttribute("Account") @Valid Account account, BindingResult result, Model model, HttpSession session){
 		
-		Account accountpw = AccountDao.findAccountByPassword(new String(account.getPassword()),new String(account.getUsername()));
+		Account accountpw = accountDao.findAccountByPassword(new String(account.getPassword()),new String(account.getUsername()));
 		if(accountpw == null){
 			result.addError(new FieldError("account", "username", "No account found with that username/password combination."));
 		}
 		if (!result.hasErrors()) {
 			session.setAttribute("account", accountpw);
 			model.addAttribute(accountpw);
+			if(accountpw.getPlayer()!=null){session.setAttribute("player", accountpw.getPlayer());}
 			return "redirect:/welcome";
 		} else {
 			System.out.println("test");
@@ -94,7 +102,7 @@ public class GameController {
 	}
 	
 	@RequestMapping (value="/charactercreation", method=RequestMethod.POST)
-	public String CharacterCreated(@ModelAttribute("Player") @Valid Player player, BindingResult result, HttpSession s){
+	public String CharacterCreated(@ModelAttribute("Player") Player player, BindingResult result, HttpSession s){
 		if(!SessionCheck(s)){return "redirect:/";}
 		
 		if(player.getName() == null){
@@ -108,8 +116,9 @@ public class GameController {
 		
 		Account a = (Account) s.getAttribute("account");
 		if(a.getPlayer()!=null){return "redirect:/";}
-		AccountDao.createPlayer(a, player.getName(), player.getSex());
-		s.setAttribute("Player", player);
+		playerDao.createPlayer(a, player.getName(), player.getSex());
+		s.setAttribute("player", player);
+		s.setAttribute("account", accountDao.findAccount(a.getId()));
 		return "redirect:/welcome";
 	}
 	
@@ -124,21 +133,11 @@ public class GameController {
 	}
 	
 	private boolean SessionCheck(HttpSession s){
-		try{ if(s == null || s.getAttribute("account").equals(null)){
+		try{ if(s == null || s.getAttribute("account")==null){
 			return false;	
 			}
 		} catch (NullPointerException e){ return false;}
 		return true;
 	}
-	
-	@RequestMapping (value="/map", method=RequestMethod.GET)
-	public String Map(){
-		return "map";
-	}
-	@RequestMapping (value="/CombatRuins", method=RequestMethod.GET)
-	public String CombatRuins(){
-		return "CombatRuins";
-	}
 
 }
-

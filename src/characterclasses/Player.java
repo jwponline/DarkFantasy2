@@ -12,11 +12,10 @@ import database.Account;
 
 @Entity
 public class Player {
+	private Long id;
 	@NotNull
 	private String name;
-	@NotNull
 	private Account account;
-	private Long id;
 	@NotNull
 	private String sex;	
 	
@@ -27,14 +26,16 @@ public class Player {
 		return id;
 	}
 	
-	@OneToOne (mappedBy="player")
+	public Player(){}
+	
 	@NotNull
+	@OneToOne (mappedBy="player")
 	public Account getAccount() {
-		return account;
+		return this.account;
 	}
 	
 	public void setAccount(Account account) {
-		if(this.account==null){this.account = account;}
+		this.account = account;
 	}
 	
 	@SuppressWarnings("unused")
@@ -46,8 +47,9 @@ public class Player {
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
-		if(this.name == null){this.name = name;}
+		this.name = name;
 	}
 	
 	@NotNull
@@ -55,7 +57,7 @@ public class Player {
 		return sex;
 	}
 	public void setSex(String sex) {
-		if(this.sex == null){this.sex = sex;}
+		this.sex = sex;
 	}
 
 }
