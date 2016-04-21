@@ -7,6 +7,16 @@ menubutton{ margin-left: 10%; margin-right: 10%; width: 80%; height: 7%; positio
 button{margin-left: 5%; margin-right: 5%; width: 90%; height: 20%; position: relative;background: url("Paper.jpg"); background-size: cover;}
 map{}
 
+/*Accordion button 1 */
+ab1{background: url("Paper.jpg");
+	display: block;
+	cursor: pointer;
+	position: relative;
+	margin: 2px 0 0 0;
+	padding: .5em .5em .5em .7em;
+	min-height: 0; /* support: IE7 */
+	font-size: 100%;}
+
 
 .ui-accordion .ui-accordion-header {
 	background: url("Paper.jpg");

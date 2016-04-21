@@ -9,30 +9,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/style.css" />" rel="stylesheet"  type="text/css" />
 <title>Combat in the Ruins</title>
-
-
-<%-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">--%>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/resources/demos/style.css">
-  
-  
+   
   <script>
   $(function() {
     $( "#accordion" ).accordion();
   });
   </script>
-  
-  <script>
-  $(function() {
-    $( "input[type=submit], a, button" )
-      .button()
-      .click(function( event ) {
-    	  return ("http://localhost:8080/DarkFantasyNew/map");
-      });
-  });
-  </script>
-
 </head>
 <body>
 
@@ -47,13 +33,23 @@ Map
 Here goes the flavour text: <%= TempMain.main()%>
 </txtoutput>
 
+<section>
+
+<input type = "button" value = "Bloody murder" id="murder_btn">
+<p style="display:hidden">Antwoord: <span id="antwoord"></span></p>
+
+</section>
+
+
+
 <div id="accordion">
   <h3>Attack</h3>
   <div>
     <p>
     <button>Stab</button>
-    <input type= "submit" value="Slash">
-    <a href="/DarkFantasyNew/map">Bash</a>
+    <button>Slash</button>
+    <a href="/DarkFantasy2/map">Bash</a>
+    <ab1>ownage</ab1>
     </p>
   </div>
   <h3>Defend</h3>
@@ -95,7 +91,23 @@ Here goes the flavour text: <%= TempMain.main()%>
   </div>
 </div>
 
+<script>
 
+var root_url = '<c:url value="/" />';
+
+
+function BloodyMurder(){
+	var url = root_url + "BloodyMurder";
+	$.get(url, function(){
+	console.log("testline");
+	$('antwoord').text("testline2").show();})
+}
+
+$(document).ready(function(){
+	$('#murder_btn').click(BloodyMurder);
+});
+
+</script>
 
 </body>
 </html>
