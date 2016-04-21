@@ -12,7 +12,9 @@
 <link href="<c:url value="/resources/style.css" />" rel="stylesheet"  type="text/css" />
 </head>
 <body> Welcome ${account.username}
-<p class="col-sm-offset-2"><a href="<c:url value="/logout"/>">Log out</a></p>
+<p class="col-sm-offset-2"><a href="<c:url value="/logout"/>">Log out</a></p><br>
+<p class="col-sm-offset-2"><a href="<c:url value="/map"/>">Go to Map</a></p><br>
+<p class="col-sm-offset-2"><a href="<c:url value="/Ruins"/>">Go to Ruins</a></p><br>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </body>

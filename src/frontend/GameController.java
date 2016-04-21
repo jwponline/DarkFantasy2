@@ -122,6 +122,18 @@ public class GameController {
 		return "redirect:/welcome";
 	}
 	
+	@RequestMapping(value="/map", method=RequestMethod.GET)
+	public String Map(HttpSession s){
+		if(!SessionCheck(s)){return "redirect:/";}
+		return "map";
+	}
+	
+	@RequestMapping(value="/Ruins", method=RequestMethod.GET)
+	public String CombatRuins(HttpSession s){
+		if(!SessionCheck(s)){return "redirect:/";}
+		return "CombatRuins";
+	}
+	
 	@ModelAttribute("Account")
 	public Account retrieveAccount(){
 		return new Account();
