@@ -1,14 +1,17 @@
 package turnbasedcombat;
 
+import javax.servlet.http.HttpSession;
+
 import characterclasses.GreaterDemon;
 import characterclasses.Imp;
 import characterclasses.NPC;
 //import characterclasses.PatheticDemonologist;
 
 public class TempMain {
-	public static String main(){
+	public static String main(HttpSession s){
 		
-		//Player p = new Player("Stefan", 200, 175, 30);
+		characterclasses.Player x = (characterclasses.Player)s.getAttribute("player");
+		Player p = new Player(x.getName());
 		NPC q = new GreaterDemon("O'crap", "Greater Demon", 80, 80, 20);
 		NPC r = new Imp("hctiB'elttiL", "Imp", 25, 25, 10);
 		//NPC s = new PatheticDemonologist("Alfred", "Cult leader", 55, 55, 15);

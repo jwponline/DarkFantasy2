@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -15,6 +16,7 @@ public class Account {
 	private Long id;
 	@NotNull
 	private String username;
+	@NotNull
 	private String password;
 	private Player player;
 	
@@ -34,6 +36,7 @@ public class Account {
 	}
 	
 	@NotNull
+	@Size(min = 2)
 	public String getUsername() {
 		return username;
 	}
@@ -43,6 +46,7 @@ public class Account {
 	}
 	
 	@NotNull
+	@Size(min = 4)
 	public String getPassword() {
 		return password;
 	}

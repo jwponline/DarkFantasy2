@@ -27,6 +27,7 @@
     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-10">
       <form:input path="password" type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password"/>
+      <form:errors path="password"/><br>
     </div>
   </div>
   <div class="form-group">

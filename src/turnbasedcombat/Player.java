@@ -25,10 +25,10 @@ public class Player extends Character{
 	
 	public Weapon Weapon = new Sword("sword", 40, 10, 25);
 
-	public Player(String PC_name, int maxHealth, int currentHealth, int damageDealing){
-		super(maxHealth, currentHealth);
+	public Player(String PC_name){
+		super(200, 175);
 		setPlayerName(PC_name);
-		setDamage(damageDealing);
+		setDamage(30);
 		setProfession("yourself");
 	}
 	
