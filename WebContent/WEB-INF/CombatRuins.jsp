@@ -11,7 +11,7 @@
 <title>Combat in the Ruins</title>
 
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<%-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">--%>
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/resources/demos/style.css">
@@ -48,15 +48,15 @@ Here goes the flavour text: <%= TempMain.main()%>
 </txtoutput>
 
 <div id="accordion">
-  <h3>Section 1</h3>
+  <h3>Attack</h3>
   <div>
     <p>
-    <button>Charactersheet</button>
-    <input type= "submit" value="submit button">
-    <a href="/DarkFantasyNew/map">An anchor</a>
+    <button>Stab</button>
+    <input type= "submit" value="Slash">
+    <a href="/DarkFantasyNew/map">Bash</a>
     </p>
   </div>
-  <h3>Section 2</h3>
+  <h3>Defend</h3>
   <div>
     <p>
     Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
@@ -65,7 +65,7 @@ Here goes the flavour text: <%= TempMain.main()%>
     suscipit faucibus urna.
     </p>
   </div>
-  <h3>Section 3</h3>
+  <h3>Magic</h3>
   <div>
     <p>
     Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
@@ -79,7 +79,7 @@ Here goes the flavour text: <%= TempMain.main()%>
       <li>List item three</li>
     </ul>
   </div>
-  <h3>Section 4</h3>
+  <h3>Items</h3>
   <div>
     <p>
     Cras dictum. Pellentesque habitant morbi tristique senectus et netus

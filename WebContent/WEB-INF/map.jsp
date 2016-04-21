@@ -25,7 +25,7 @@ Map
 Welcome to the map!
 
 
-<img src="resources\fantasy_forest.png" usemap = "#forestmap" style="width:100%;height:100%;">
+<img src="resources\images\fantasy_forest.png" usemap = "#forestmap" style="width:100%;height:100%;">
 
 <map name = "forestmap">
 		<area shape = "circle" coords="275,150,30" alt = "ruins" href="venus.htm">
