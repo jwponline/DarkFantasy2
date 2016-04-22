@@ -151,5 +151,13 @@ public class GameController {
 		} catch (NullPointerException e){ return false;}
 		return true;
 	}
+	/*
+	@RequestMapping("/stab")
+	public String stab(){
+		
+		String msg = "You stabbed a man"; 
+		
+		return msg;
+	}*/
 
 }

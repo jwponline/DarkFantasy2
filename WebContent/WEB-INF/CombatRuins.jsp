@@ -27,6 +27,7 @@ Menu:
 <menubutton>Charactersheet</menubutton>
 Inventory
 Map
+log out
 </menu>
 
 <txtoutput>
@@ -93,18 +94,14 @@ Here goes the flavour text: <%= TempMain.main()%>
 
 <script>
 
-var root_url = '<c:url value="/" />';
 
-
-function BloodyMurder(){
-	var url = root_url + "BloodyMurder";
-	$.get(url, function(){
-	console.log("testline");
-	$('antwoord').text("testline2").show();})
+function stab(){
+	$.get("combat/stab", function(data){
+	$('antwoord').text(data).show();})
 }
 
 $(document).ready(function(){
-	$('#murder_btn').click(BloodyMurder);
+	$('#murder_btn').click(stab);
 });
 
 </script>
