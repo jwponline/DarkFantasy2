@@ -15,7 +15,7 @@ public class CombatEvolved {
 	
 	@RequestMapping("stab")
 	public String stab(){
-		return "you didn't stab a woman";
+		return "you didn't stab a woman twice";
 	}
 
 
