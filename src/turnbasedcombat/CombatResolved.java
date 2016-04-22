@@ -296,17 +296,7 @@ public class CombatResolved {
 			return;
 		}
 		double dmgMod = calcDMGMod(PlayerDMGMod(Player, "piercing"), Defender);
-		int damage = (int) Math.round(Player.Weapon.getPierceDMG() * dmgMod); // done
-																				// sepparatly
-																				// so
-																				// that
-																				// it
-																				// can
-																				// be
-																				// used
-																				// in
-																				// text
-																				// later
+		int damage = (int) Math.round(Player.Weapon.getPierceDMG() * dmgMod); 
 		newHealth -= damage;
 
 		System.out.println("You rush forward and stab them with the pointy end of your " + Player.Weapon.getName()
