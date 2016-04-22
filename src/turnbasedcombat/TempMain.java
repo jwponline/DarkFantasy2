@@ -8,10 +8,10 @@ import characterclasses.NPC;
 //import characterclasses.PatheticDemonologist;
 
 public class TempMain {
-	public static String main(HttpSession s){
+	public static String main(){//HttpSession s){
 		
-		characterclasses.Player x = (characterclasses.Player)s.getAttribute("player");
-		Player p = new Player(x.getName());
+		//characterclasses.Player x = (characterclasses.Player)s.getAttribute("player");
+		//Player p = new Player(x.getName());
 		NPC q = new GreaterDemon("O'crap", "Greater Demon", 80, 80, 20);
 		NPC r = new Imp("hctiB'elttiL", "Imp", 25, 25, 10);
 		//NPC s = new PatheticDemonologist("Alfred", "Cult leader", 55, 55, 15);
