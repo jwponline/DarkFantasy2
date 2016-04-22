@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 /build/
 
 WebContent/WEB-INF/classes
+=======
+/build/
+/WebContent/WEB-INF/classes/
+>>>>>>> branch 'master' of https://github.com/jwponline/DarkFantasy2.git
