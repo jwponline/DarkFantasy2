@@ -27,6 +27,7 @@ Menu:
 <menubutton>Charactersheet</menubutton>
 Inventory
 Map
+log out
 </menu>
 
 <txtoutput>
