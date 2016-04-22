@@ -15,8 +15,10 @@ import characterclasses.Player;
 public class Account {
 	private Long id;
 	@NotNull
+	@Size(min = 2, message = "Username must be at least 2 characters long")
 	private String username;
 	@NotNull
+	@Size(min = 4, message = "Password must be at least 4 characters long")
 	private String password;
 	private Player player;
 	
@@ -36,7 +38,6 @@ public class Account {
 	}
 	
 	@NotNull
-	@Size(min = 2)
 	public String getUsername() {
 		return username;
 	}
@@ -46,7 +47,6 @@ public class Account {
 	}
 	
 	@NotNull
-	@Size(min = 4)
 	public String getPassword() {
 		return password;
 	}

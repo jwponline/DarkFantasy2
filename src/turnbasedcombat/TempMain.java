@@ -1,6 +1,6 @@
 package turnbasedcombat;
 
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 import characterclasses.GreaterDemon;
 import characterclasses.Imp;

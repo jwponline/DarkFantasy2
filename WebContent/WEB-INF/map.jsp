@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="<c:url value="/resources/style.css" />" rel="stylesheet"  type="text/css" />
+<link href="<c:url value="/resources/UI.css" />" rel="stylesheet"  type="text/css" />
 <title>Map</title>
 </head>
 <body>
