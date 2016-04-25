@@ -33,7 +33,7 @@ public class PlayerDao {
 		player.setCurrentHP(player.getMaxHP());
 		
 		
-		player.setPiercingRes(1.0); 
+		/*player.setPiercingRes(1.0); 
 		player.setBashingRes(1.0);
 		player.setSlashingRes(1.0);
 		player.setBlastRes(1.0);
@@ -49,7 +49,7 @@ public class PlayerDao {
 		
 		Weapon Weapon2 = new Sword("sword", 40, 10, 25);
 		player.setWeapon(Weapon2);
-		
+		*/
 		
 		em.find(Account.class, account.getId()).setPlayer(player);
 		

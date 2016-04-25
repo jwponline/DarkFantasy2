@@ -23,10 +23,10 @@ public class Player {
 	private int currentHP;
 	private int maxHP;
 	
-	private double healingRes, piercingRes, bashingRes, slashingRes, blastRes;
+	/*private double healingRes, piercingRes, bashingRes, slashingRes, blastRes;
 	private double fireRes, elecRes, iceRes, earthRes, darkRes, holyRes, natureRes, spiritRes;
 	
-	public Weapon Weapon;
+	public Weapon Weapon;*/
 
 	@Id
 	@GeneratedValue(generator="increment")
@@ -85,7 +85,7 @@ public class Player {
 		this.maxHP = maxHP;
 	}
 
-	public double getHealingRes() {
+	/*public double getHealingRes() {
 		return healingRes;
 	}
 
@@ -195,7 +195,7 @@ public class Player {
 
 	public void setWeapon(Weapon weapon) {
 		Weapon = weapon;
-	}
+	}*/
 	
 	
 	
