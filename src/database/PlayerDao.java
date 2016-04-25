@@ -24,7 +24,7 @@ public class PlayerDao {
 	 */
 	
 	@Transactional
-	public Player createPlayer(Account account, String sex, String name){
+	public Player createPlayer(Account account, String name, String sex){
 		Player player = new Player();
 		player.setName(name);
 		player.setSex(sex);
