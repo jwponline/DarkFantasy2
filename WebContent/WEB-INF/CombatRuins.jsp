@@ -31,15 +31,11 @@ log out
 </menu>
 
 <txtoutput>
-Here goes the flavour text: <%= TempMain.main()%>
+<%---Here goes the flavour text: <%= TempMain.main()%> --%>
+<span id="antwoord"></span>
 </txtoutput>
 
-<section>
 
-<input type = "button" value = "Bloody murder" id="murder_btn">
-<p style="display:hidden">Antwoord: <span id="antwoord"></span></p>
-
-</section>
 
 
 
@@ -47,7 +43,7 @@ Here goes the flavour text: <%= TempMain.main()%>
   <h3>Attack</h3>
   <div>
     <p>
-    <button>Stab</button>
+    <button><input type = "button" value = "stab" id="stab_btn"></button>
     <button>Slash</button>
     <a href="/DarkFantasy2/map">Bash</a>
     <ab1>ownage</ab1>
@@ -92,16 +88,36 @@ Here goes the flavour text: <%= TempMain.main()%>
   </div>
 </div>
 
+<section>
+
+<input type = "button" value = "Bloody murder" id="stab_btn">
+<p style="display:hidden">Antwoord: <span id="antwoord2"></span></p>
+
+</section>
+
 <script>
 
 
+
 function stab(){
+	
+	$.get("combat/engage", function(data){
+		t = session.getAttribute("Enemy 1");
+		q = session.getAttribute("Enemy 2");
+		r = session.getAttribute("Enemy 3");
+		$("#antwoord").append(t.getName);
+		$("#antwoord").append(q.getName);
+		$("#antwoord").append(r.getName);
+	})
 	$.get("combat/stab", function(data){
-	$('antwoord').text(data).show();})
+	  <%--alert(data);}); --%>
+		$("#antwoord2").text(data.name);
+
+		});
 }
 
 $(document).ready(function(){
-	$('#murder_btn').click(stab);
+	$('#stab_btn').click(stab);
 });
 
 </script>

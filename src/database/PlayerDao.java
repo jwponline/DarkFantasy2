@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import characterclasses.Player;
+import items.Sword;
+import items.Weapon;
 
 @Repository
 public class PlayerDao {
@@ -27,6 +29,27 @@ public class PlayerDao {
 		player.setName(name);
 		player.setSex(sex);
 		player.setAccount(account);
+		player.setMaxHP(200);
+		player.setCurrentHP(player.getMaxHP());
+		
+		
+		player.setPiercingRes(1.0); 
+		player.setBashingRes(1.0);
+		player.setSlashingRes(1.0);
+		player.setBlastRes(1.0);
+		player.setHealingRes(1.0);
+		player.setFireRes(1.0);
+		player.setElecRes(1.0);
+		player.setIceRes(1.0);
+		player.setEarthRes(1.0); 
+		player.setDarkRes(1.0);
+		player.setHolyRes(1.0);
+		player.setNatureRes(1.0);
+		player.setSpiritRes(1.0);
+		
+		Weapon Weapon2 = new Sword("sword", 40, 10, 25);
+		player.setWeapon(Weapon2);
+		
 		
 		em.find(Account.class, account.getId()).setPlayer(player);
 		
