@@ -1,5 +1,7 @@
 package frontend;
 
+
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +11,8 @@ import characterclasses.GreaterDemon;
 import characterclasses.Imp;
 import characterclasses.NPC;
 import characterclasses.PatheticDemonologist;
-import turnbasedcombat.TempMain;
+import characterclasses.Player;
+import turnbasedcombat.CombatOutcome;
 
 @RestController
 @RequestMapping("/combat")
@@ -33,25 +36,46 @@ public class CombatEvolved {
 		System.out.println("comcatevolved has loaded!");
 	}
 	
-	@RequestMapping("stab")
-	public String stab(HttpSession session){
+	@RequestMapping("defend")
+	public CombatOutcome defend(HttpSession session){
 		
-		StringBuilder g = new StringBuilder();
-		NPC v = TempMain.main();
+		CombatOutcome c = new CombatOutcome();
+		
+		c.setPlayerDescription("The greater demon charges at you, as he swings his sword you quickly sidestep him, and trip him up. The imp claws at you and a quick bash with your shield knocks him into some barrels, it's all going quite well until you take a firebolt to the knee, ending your adventuring days.");
+		c.setPlayerHpLoss(10);
+			
+		return (c);
+	}
+	
+	@RequestMapping("stab")
+	public CombatOutcome stab(HttpSession session){
+		
+		CombatOutcome c = new CombatOutcome();
+		
+		//Player p = (Player)session.getAttribute("player");
 		NPC t = (NPC)session.getAttribute("Enemy 1");
 		NPC q = (NPC)session.getAttribute("Enemy 2");
 		NPC r = (NPC)session.getAttribute("Enemy 3");
-		g.append(t.getName());
-		g.append(q.getName());
-		g.append(r.getName());
-		g.append(v.getName());
-		
-		
-		
-		return (g.toString());
+			
+		return (c);
 	}
 
-
+	@RequestMapping("player")
+	public String player(HttpSession session){
+		
+		Player p = (Player)session.getAttribute("player");
+		//CombatOutcome c = new CombatOutcome();
+		
+		//Player p = (Player)session.getAttribute("player");
+		//NPC t = (NPC)session.getAttribute("Enemy 1");
+		//NPC q = (NPC)session.getAttribute("Enemy 2");
+		//NPC r = (NPC)session.getAttribute("Enemy 3");
+		p.setCurrentHP((p.getCurrentHP()-59));
+		String q = ""+ p.getName()+p.getCurrentHP();
+		session.setAttribute("player", p);
+		
+		return (q);
+	}
 
 	
 }

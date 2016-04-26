@@ -44,18 +44,16 @@ log out
   <div>
     <p>
     <button><input type = "button" value = "stab" id="stab_btn"></button>
+        <button><input type = "button" value = "player" id="player_btn"></button>
     <button>Slash</button>
-    <a href="/DarkFantasy2/map">Bash</a>
+    <a href="<c:url value="/map"/>">Bash</a>
     <ab1>ownage</ab1>
     </p>
   </div>
   <h3>Defend</h3>
   <div>
     <p>
-    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-    suscipit faucibus urna.
+    <button><input type = "button" value = "defend" id="defend_btn"></button>
     </p>
   </div>
   <h3>Magic</h3>
@@ -88,16 +86,23 @@ log out
   </div>
 </div>
 
-<section>
-
-<input type = "button" value = "Bloody murder" id="stab_btn">
-<p style="display:hidden">Antwoord: <span id="antwoord2"></span></p>
-
-</section>
 
 <script>
 
+function defend(){
+	
+	$.get("combat/defend", function(data){
+		$("#antwoord").text(data.playerDescription);
+	});
+}
 
+function player(){
+	
+	$.get("combat/player", function(data){
+		alert(data);
+		$("#antwoord").text(data);
+	});
+}
 
 function stab(){
 	
@@ -105,19 +110,21 @@ function stab(){
 		t = session.getAttribute("Enemy 1");
 		q = session.getAttribute("Enemy 2");
 		r = session.getAttribute("Enemy 3");
-		$("#antwoord").append(t.getName);
-		$("#antwoord").append(q.getName);
-		$("#antwoord").append(r.getName);
+		$("#antwoord").append(t.name);
+		$("#antwoord").append(q.name);
+		$("#antwoord").append(r.name);
 	})
 	$.get("combat/stab", function(data){
 	  <%--alert(data);}); --%>
-		$("#antwoord2").text(data.name);
+		$("#antwoord").text(data.name);
 
 		});
 }
 
 $(document).ready(function(){
 	$('#stab_btn').click(stab);
+	$('#defend_btn').click(defend);
+	$('#player_btn').click(player);
 });
 
 </script>

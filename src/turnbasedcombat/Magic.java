@@ -22,7 +22,7 @@ public class Magic extends CombatResolved {
 			return;
 		}
 	}
-
+/*
 	public static void MindRead(Character caster, Character target) {
 		if (target instanceof Player) {
 			System.out.println(
@@ -121,5 +121,5 @@ public class Magic extends CombatResolved {
 			}
 		}
 	}
-
+*/
 }

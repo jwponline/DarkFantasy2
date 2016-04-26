@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import characterclasses.Character;
+import characterclasses.Player;
 
 public class CombatResolved {
 
@@ -38,6 +39,7 @@ public class CombatResolved {
 	}
 
 	private static void playerTurn(Player Player, Character Enemy1, Character Enemy2, Character Enemy3) {
+		/*
 		Character target = Player;
 
 		System.out.print("Who do you want to interact with?\n 1) " + Enemy1.getProfession() + "\n 2) "
@@ -90,7 +92,9 @@ public class CombatResolved {
 		} else if (choice == 2) {
 			System.out.println(
 					"what did I say about defending? It's not implemented yet, so stop being a scrub and start attacking.");
-		} else if (choice == 3) {
+		} 
+		
+		else if (choice == 3) {
 			System.out.println(
 					"What spell do you want to cast?\n 1) Read mind\n 2) Ice Spike\n 3) Fireball\n 4) Holy Prayer\n 5) Heal");
 			choice = input.nextInt();
@@ -114,7 +118,9 @@ public class CombatResolved {
 				System.out.println("next time please choose a listed number");
 				playerTurn(Player, Enemy1, Enemy2, Enemy3);
 			}
-		} else if (choice == 4) {
+		} 
+		
+		else if (choice == 4) {
 			System.out.println("What kind of item did you want to use?\n 1) Health Potion");
 			choice = input.nextInt();
 			switch (choice) {
@@ -134,6 +140,7 @@ public class CombatResolved {
 			System.out.println("please choose a number between 1 and 5");
 			playerTurn(Player, Enemy1, Enemy2, Enemy3);
 		}
+		*/
 	}
 
 	private static void inspect(Player Player, Character Enemy1, Character Enemy2, Character Enemy3) {
@@ -181,7 +188,7 @@ public class CombatResolved {
 	private static void theirTurn(Player Player, Character Enemy) {
 		if (Enemy.getCurrentHP() > 0) {
 			System.out.println("" + Enemy.getAttackDescription());
-			DealDamage(Enemy, Player);
+			//DealDamage(Enemy, Player);
 		} else {
 			return;
 		}
@@ -244,19 +251,19 @@ public class CombatResolved {
 		if (Player.getDmgType() != null) {
 			Combined.addAll(Player.getDmgType());
 		}
-		if (Player.Weapon.getDmgType() != null) {
+		/*if (Player.Weapon.getDmgType() != null) {
 			Combined.addAll(Player.Weapon.getDmgType());
-		}
+		}*/
 		return Combined;
 	}
 
 	// Death text
 	protected static void Death(Character Defender) {
 
-		if (Defender.getCurrentHP() <= 0 && Defender instanceof Player) {
+		/*if (Defender.getCurrentHP() <= 0 && Defender instanceof Player) {
 			System.out.println("You collapse onto the ground under the weight of your wounds");
 			PlayerDeath.playerDies();
-		}
+		}*/
 		if (Defender.getCurrentHP() <= 0) {
 			System.out.println("\nThe " + Defender.getProfession()
 					+ " collapses under the weight of his wounds. He dies on the cold ground.");
@@ -283,9 +290,9 @@ public class CombatResolved {
 
 		Defender.setCurrentHP(newHealth);
 	}
-
+/*
 	private static void piercingAtk(Player Player, Character Defender) {
-		if (Defender instanceof Player) {
+		/*if (Defender instanceof Player) {
 			System.out.println(
 					"You take out your knife and stab yourself in the stomach, slowly dragging it until your bowels fall out.\nNext time just slit your throat its a lot less painfull, though I guess also less honorable.");
 			PlayerDeath.playerDies();
@@ -310,8 +317,8 @@ public class CombatResolved {
 		}
 
 		Defender.setCurrentHP(newHealth);
-	}
-
+	} */
+/*
 	private static void bashingAtk(Player Player, Character Defender) {
 		if (Defender instanceof Player) {
 			System.out.println("You take the blut end of you weapon and start bashing in your own skull!");
@@ -367,5 +374,5 @@ public class CombatResolved {
 
 		Defender.setCurrentHP(newHealth);
 	}
-
+*/
 }

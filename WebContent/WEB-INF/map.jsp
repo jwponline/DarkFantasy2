@@ -25,6 +25,7 @@
 
 	<menu>
 <p>${player.name}</p>
+<p>${player.sex}</p>
 		<button>Charactersheet</button>
 
 		Inventory Map
