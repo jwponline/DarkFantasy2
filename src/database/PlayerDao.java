@@ -1,5 +1,6 @@
 package database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -50,6 +51,11 @@ public class PlayerDao {
 		/*Weapon Weapon2 = new Sword("sword", 40, 10, 25);
 		player.setWeapon(Weapon2);*/
 		
+		player.setWeapon("sword");
+		player.setSlashDMG(40);
+		player.setBashDMG(10);
+		player.setPierceDMG(25);
+		player.setDmgType(new ArrayList<String>());
 		
 		em.find(Account.class, account.getId()).setPlayer(player);
 		

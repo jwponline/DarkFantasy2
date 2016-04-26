@@ -1,5 +1,7 @@
 package characterclasses;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,7 +28,14 @@ public class Player {
 	private double healingRes, piercingRes, bashingRes, slashingRes, blastRes;
 	private double fireRes, elecRes, iceRes, earthRes, darkRes, holyRes, natureRes, spiritRes;
 	
-	/*private Weapon Weapon;*/
+	
+	private String weapon;
+	private int slashDMG;
+	private int bashDMG;
+	private int pierceDMG;
+	private ArrayList<String> dmgType;
+	
+	
 
 	@Id
 	@GeneratedValue(generator="increment")
@@ -189,16 +198,44 @@ public class Player {
 		this.spiritRes = spiritRes;
 	}
 
-	/*public Weapon getWeapon() {
-		return Weapon;
+	public int getSlashDMG() {
+		return slashDMG;
 	}
 
-	public void setWeapon(Weapon weapon) {
-		Weapon = weapon;
-	}*/
-	
-	
-	
-	
+	public void setSlashDMG(int slashDMG) {
+		this.slashDMG = slashDMG;
+	}
 
+	public int getBashDMG() {
+		return bashDMG;
+	}
+
+	public void setBashDMG(int bashDMG) {
+		this.bashDMG = bashDMG;
+	}
+
+	public int getPierceDMG() {
+		return pierceDMG;
+	}
+
+	public void setPierceDMG(int pierceDMG) {
+		this.pierceDMG = pierceDMG;
+	}
+	
+	public String getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(String weapon) {
+		this.weapon = weapon;
+	}
+
+	public ArrayList<String> getDmgType() {
+		return dmgType;
+	}
+
+	public void setDmgType(ArrayList<String> dmgType) {
+		this.dmgType = dmgType;
+	}
+	
 }
