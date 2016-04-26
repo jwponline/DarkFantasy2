@@ -237,5 +237,4 @@ public class Player {
 	public void setDmgType(ArrayList<String> dmgType) {
 		this.dmgType = dmgType;
 	}
-	
 }

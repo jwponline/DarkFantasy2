@@ -48,9 +48,6 @@ public class PlayerDao {
 		player.setNatureRes(1.0);
 		player.setSpiritRes(1.0);
 		
-		/*Weapon Weapon2 = new Sword("sword", 40, 10, 25);
-		player.setWeapon(Weapon2);*/
-		
 		player.setWeapon("sword");
 		player.setSlashDMG(40);
 		player.setBashDMG(10);
