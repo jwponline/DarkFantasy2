@@ -107,16 +107,12 @@ function player(){
 function stab(){
 	
 	$.get("combat/engage", function(data){
-		t = session.getAttribute("Enemy 1");
-		q = session.getAttribute("Enemy 2");
-		r = session.getAttribute("Enemy 3");
-		$("#antwoord").append(t.name);
-		$("#antwoord").append(q.name);
-		$("#antwoord").append(r.name);
+		$("#antwoord").append(data);
 	})
 	$.get("combat/stab", function(data){
-	  <%--alert(data);}); --%>
-		$("#antwoord").text(data.name);
+	  	alert(data);
+		$("#antwoord").append(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
 
 		});
 }

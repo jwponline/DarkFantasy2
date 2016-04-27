@@ -13,6 +13,7 @@ import characterclasses.NPC;
 import characterclasses.PatheticDemonologist;
 import characterclasses.Player;
 import turnbasedcombat.CombatOutcome;
+import combat.*;
 
 @RestController
 @RequestMapping("/combat")
@@ -24,11 +25,10 @@ public class CombatEvolved {
 		NPC q = new GreaterDemon("O'crap", "Greater Demon", 80, 80, 20);
 		NPC r = new Imp("hctiB'elttiL", "Imp", 25, 25, 10);
 		NPC s = new PatheticDemonologist("Alfred", "Cult leader", 55, 55, 15);
-		String t = "Victory";
 		session.setAttribute("Enemy 1", q);
 		session.setAttribute("Enemy 2", r);
 		session.setAttribute("Enemy 3", s);
-		return s.getName();
+		return "Combat Instance Created";
 	}
 	
 	public CombatEvolved() {
@@ -41,8 +41,12 @@ public class CombatEvolved {
 		
 		CombatOutcome c = new CombatOutcome();
 		
-		c.setPlayerDescription("The greater demon charges at you, as he swings his sword you quickly sidestep him, and trip him up. The imp claws at you and a quick bash with your shield knocks him into some barrels, it's all going quite well until you take a firebolt to the knee, ending your adventuring days.");
+		c.setPlayerDescription("The greater demon charges at you, as he swings his sword you quickly sidestep him, and trip him up. The imp claws at you and a quick bash with your shield knocks him into some barrels, "
+				+ "it's all going quite well until you take a firebolt to the knee, nearly ending your adventuring days. You lose 10 HP.");
 		c.setPlayerHpLoss(10);
+		Player p = (Player)session.getAttribute("player");
+		p.setCurrentHP((p.getCurrentHP()-10));
+		session.setAttribute("player", p);
 			
 		return (c);
 	}
@@ -51,11 +55,9 @@ public class CombatEvolved {
 	public CombatOutcome stab(HttpSession session){
 		
 		CombatOutcome c = new CombatOutcome();
+		int target = 1;
 		
-		//Player p = (Player)session.getAttribute("player");
-		NPC t = (NPC)session.getAttribute("Enemy 1");
-		NPC q = (NPC)session.getAttribute("Enemy 2");
-		NPC r = (NPC)session.getAttribute("Enemy 3");
+		c = piercingAtk(target, session);
 			
 		return (c);
 	}
