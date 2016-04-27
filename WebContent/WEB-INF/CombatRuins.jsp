@@ -107,7 +107,7 @@ function player(){
 function stab(){
 	
 	$.get("combat/engage", function(data){
-		$("#antwoord").append(data);
+		$("#antwoord").text(data);
 	})
 	$.get("combat/stab", function(data){
 	  	alert(data);
