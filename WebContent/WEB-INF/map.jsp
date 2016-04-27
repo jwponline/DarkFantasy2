@@ -11,24 +11,99 @@
 <link href="<c:url value="/resources/UI.css" />" rel="stylesheet"
 	type="text/css" />
 <title>Map</title>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <sec:csrfMetaTags />
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<style>
+  .ui-progressbar {
+    position: relative;
+    background-color: red;
+    color: red;
+  }
+  .progress-label {
+    position: absolute;
+    left: 30%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+  </style>
+  <script>
+  $(function() {
+	  var currentHP = ${player.currentHP};
+	  var maxHP = ${player.maxHP};
+	  var healthpercentage = 100 * currentHP / maxHP;
+    var progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" );
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( "Health: " + progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Full Health!" );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + 1 );
+ 
+      if ( val < healthpercentage ) {
+        setTimeout( progress, 80 );
+      }
+    }
+ 
+    setTimeout( progress, 2000 );
+  });
+  </script>
 <script type="text/javascript">
 	// configureer JQuery om csrf-token mee te sturen
 	var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
 	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 	var csrfToken = $("meta[name='_csrf']").attr("content");
-</script>
+</script> 
+
 <script src="resources/ImageMapResizer.min.js"></script>
 </head>
 <body>
 
 	<menu>
-<p>${player.name}</p>
-<p>${player.sex}</p>
+	<div id="progressbar"><div class="progress-label">Loading...</div></div>		
+		<ul>
+			<li>${player.name}</li>
+			<li>Gender: ${player.sex}</li>
+			<li>current HP: ${player.currentHP}</li>
+			<li>max HP: ${player.maxHP}</li>
+			<li>bash: ${player.bashDMG}</li>
+			<li>slash: ${player.slashDMG}</li>
+			<li>pierce: ${player.pierceDMG}</li>
+			<li>damage type: ${player.dmgType}</li>
+			<li>weapon: ${player.weapon}</li>
+		</ul>
+
+
 		<button>Charactersheet</button>
 
-		Inventory Map
+		<ul>
+	<li><a href="<c:url value="/welcome"/>">Go back to welcome page</a></li>
+	<li><a href="<c:url value="/logout"/>">Logout</a></li>
+	<!--  <li><a href="<c:url value="/register"/>">Delete account</a></li>-->
+	</ul>
 
 	</menu>
 
