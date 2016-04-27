@@ -1,14 +1,9 @@
 package combat;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import javax.servlet.http.HttpSession;
 
 import characterclasses.Character;
 import characterclasses.Player;
-
-import combat.*;
 
 
 public class Attacks {
@@ -18,7 +13,7 @@ public class Attacks {
 		CombatOutcome c = new CombatOutcome();
 		
 		Player p = (Player)session.getAttribute("player");
-		Character Defender = Targetting(t, session);
+		Character Defender = CombatCore.Targetting(t, session);
 				
 		int Health = Defender.getCurrentHP();
 		
@@ -44,9 +39,9 @@ public class Attacks {
 		}
 		
 		Defender.setCurrentHP(Health);
-		ApplyDMG(t, Defender, session);
+		CombatCore.ApplyDMG(t, Defender, session);
 		
-		c = TheirTurn(p, c, session);
+		c = CombatCore.TheirTurn(p, c, session);
 		
 		return c;
 	}

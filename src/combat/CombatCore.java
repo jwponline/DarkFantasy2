@@ -65,8 +65,10 @@ public class CombatCore {
 			}
 			else {
 				sb.append("The " + e.getProfession() + " spits on your corpse.\n");
+				return 0;
 			}
 		}
+		else {return 0;}
 	}
 	
 	protected static Character Targetting(int t, HttpSession session){

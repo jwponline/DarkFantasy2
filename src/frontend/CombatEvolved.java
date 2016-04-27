@@ -12,7 +12,6 @@ import characterclasses.Imp;
 import characterclasses.NPC;
 import characterclasses.PatheticDemonologist;
 import characterclasses.Player;
-import turnbasedcombat.CombatOutcome;
 import combat.*;
 
 @RestController
@@ -57,7 +56,7 @@ public class CombatEvolved {
 		CombatOutcome c = new CombatOutcome();
 		int target = 1;
 		
-		c = piercingAtk(target, session);
+		c = Attacks.piercingAtk(target, session);
 			
 		return (c);
 	}
