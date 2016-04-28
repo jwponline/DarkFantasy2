@@ -1,3 +1,4 @@
 @CHARSET "UTF-8";
-span {color: red;}
+span {color: red; background: white;}
+a {color: lime;}
 body {margin-top: 1%; background: url("dark-fantasy.jpg") no-repeat center fixed; background-size: cover; font-size: medium; color: lime;}

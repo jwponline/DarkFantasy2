@@ -18,6 +18,8 @@
    <style>
   .ui-progressbar {
     position: relative;
+    margin-left: 30%;
+    margin-right: 30%;
   }
   .ui-progressbar-value{
   	background: rgb(255,0,0);
@@ -39,13 +41,28 @@
 </head>
 <body>
 
-<menu>
-<h3>Menu:</h3>
-<button>Charactersheet</button><br>
-<p>Inventory</p><br>
-<a href="<c:url value="/map"/>">Map</a><br>
-<a href="<c:url value="/logout"/>">log out</a>
-</menu>
+<menu>		
+		<ul>
+			<li id="playername">${player.name}</li>
+			<li>Gender: ${player.sex}</li>
+			<li>current HP: ${player.currentHP}</li>
+			<li>max HP: ${player.maxHP}</li>
+			<li>bash: ${player.bashDMG}</li>
+			<li>slash: ${player.slashDMG}</li>
+			<li>pierce: ${player.pierceDMG}</li>
+			<li>weapon: ${player.weapon}</li>
+		</ul>
+
+
+		<button>Charactersheet</button>
+
+		<ul>
+	<li><a href="<c:url value="/map"/>">Go back to map</a></li>
+	<li><a href="<c:url value="/logout"/>">Logout</a></li>
+	<!--  <li><a href="<c:url value="/register"/>">Delete account</a></li>-->
+	</ul>
+
+	</menu>
 
 <div class="jumbotron" id="jumbotron">
 <h2>You encounter enemies!</h2>
@@ -54,7 +71,7 @@
 <%---Here goes the flavour text: <%= TempMain.main()%> --%>
 <div><span id="nuke"></span></div>
 
-<div><span id="antwoord"></span></div>
+<h3 id="antwoordh"><span id="antwoord"> You find yourself among the ruins of an ancient library, the books have long since gone to dust, but there are still sign of habitation. You advance slowly and silently, in the distance you hear some footsteps approaching, one of which sounds very heavy. You don't have to wait long to find out what it is, as a greater demon, an imp and a cultist round the corner. The battle begins!!! </span></h3></div>
 </txtoutput>
 </div>
 
@@ -214,7 +231,7 @@ function defend(){
 function pray(){
 	
 	$.get("combat/pray", function(data){
-		if (data.winner){window.location = "winner"}
+		if (data.winner){alert("winner")}
 		if (data.loser){window.location = "loser"}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
@@ -259,7 +276,7 @@ function icespike(){
 function inspect(){
 	
 	$.get("combat/inspect", function(data){
-		if (data.winner){window.location = "winner"}
+		if (data.winner){alert("winner")}
 		if (data.loser){window.location = "loser"}
 		$("#antwoord").text(data.playerDescription);
 		});
@@ -270,7 +287,8 @@ function nuke(){
 	$("#nuke").prepend('<img id="Nukeit" src="<c:url value="/resources/Nukeit.jpg"/>" style="width:50%;height:50%;" />');
 	$("#antwoord").text("As you give the command, you are quickly whisked away. The large orbital bombardment platform, high above the planet whirs to live, and opens fire."
 			+ "The enemies that were arrayed before you are quickly reduced to ash and all is well in the world. Well for you anyway the innocent village 2 miles away isnt as lucky, neither is the city 10 miles from that."
-			+ "Many puppies, kittens, and children were harmed in nuking it all from orbit.")
+			+ "Many puppies, kittens, and children were harmed in nuking it all from orbit. You beat the game!!!!!")
+	
 }
 
 $(document).ready(function(){

@@ -5,6 +5,9 @@ txtoutput{background: url("Paper.jpg"); background-size: cover; position: relati
 menubutton{ margin-left: 10%; margin-right: 10%; width: 80%; height: 7%; position: relative; background: url("Paper.jpg"); background-size: cover;}
 button{margin-left: 5%; margin-right: 5%; width: 90%; height: 20%; position: relative;background: url("Paper.jpg"); background-size: cover;}
 map{}
+li{font-size: large;}
+#playername{font-size:x-large;}
+#antwoordh{margin-left: 10%; margin-right: 10%; text-align: left; padding: 2%; line-height: 1.4;}
 
 /*Accordion button 1 */
 ab1{background: url("Paper.jpg");

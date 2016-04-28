@@ -48,7 +48,7 @@
 	</nav>
 	<div class="container">
 		<h2 class="col-sm-offset-2">Dark Fantasy</h2>
-		<h4 class="col-sm-offset-2">The Ultimate Zoo Experience!</h4>
+		<h4 class="col-sm-offset-2"></h4>
 
 		<p class="col-sm-offset-2">Please login:</p>
 		<form:form class="form-horizontal" method="post"

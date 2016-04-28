@@ -88,16 +88,15 @@
 <body>
 
 	<menu>
-	<div id="progressbar"><div class="progress-label">Loading...</div></div>		
+	<div id="progressbar" style="margin-right: 5%"><div class="progress-label">Loading...</div></div>		
 		<ul>
-			<li>${player.name}</li>
+			<li id="playername">${player.name}</li>
 			<li>Gender: ${player.sex}</li>
 			<li>current HP: ${player.currentHP}</li>
 			<li>max HP: ${player.maxHP}</li>
 			<li>bash: ${player.bashDMG}</li>
 			<li>slash: ${player.slashDMG}</li>
 			<li>pierce: ${player.pierceDMG}</li>
-			<li>damage type: ${player.dmgType}</li>
 			<li>weapon: ${player.weapon}</li>
 		</ul>
 
@@ -111,8 +110,6 @@
 	</ul>
 
 	</menu>
-
-	Welcome to the map!
 
 
 	<img src="resources\fantasy_forest.png" usemap="#forestmap"
