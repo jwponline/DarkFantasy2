@@ -24,6 +24,8 @@ public class CombatEvolved {
 		NPC q = new GreaterDemon("O'crap", "Greater Demon", 80, 80, 20);
 		NPC r = new Imp("hctiB'elttiL", "Imp", 25, 25, 10);
 		NPC s = new PatheticDemonologist("Alfred", "Cult leader", 55, 55, 15);
+		InCombat z = new InCombat(true);
+		session.setAttribute("combat", z);
 		session.setAttribute("Enemy 1", q);
 		session.setAttribute("Enemy 2", r);
 		session.setAttribute("Enemy 3", s);
@@ -52,15 +54,28 @@ public class CombatEvolved {
 	
 	@RequestMapping("stab")
 	public CombatOutcome stab(HttpSession session){
-		
+		if(session.getAttribute("combat") == null){engage(session);}
+		InCombat combatcheck = (InCombat)session.getAttribute("combat");
+		if(!(combatcheck.isInCombat())){engage(session);}
 		CombatOutcome c = new CombatOutcome();
 		int target = 1;
-		
 		c = Attacks.piercingAtk(target, session);
 			
 		return (c);
 	}
 
+	@RequestMapping("pray")
+	public CombatOutcome pray(HttpSession session){
+		if(session.getAttribute("combat") == null){engage(session);}
+		InCombat combatcheck = (InCombat)session.getAttribute("combat");
+		if(!(combatcheck.isInCombat())){engage(session);}
+		CombatOutcome c = new CombatOutcome();
+		int target = 1;
+		c = Magic.HolyPrayer(target, session);
+			
+		return (c);
+	}
+	
 	@RequestMapping("player")
 	public String player(HttpSession session){
 		
@@ -71,10 +86,11 @@ public class CombatEvolved {
 		//NPC t = (NPC)session.getAttribute("Enemy 1");
 		//NPC q = (NPC)session.getAttribute("Enemy 2");
 		//NPC r = (NPC)session.getAttribute("Enemy 3");
-		p.setCurrentHP((p.getCurrentHP()-59));
+		/*p.setCurrentHP((p.getCurrentHP()-59));
 		String q = ""+ p.getName()+p.getCurrentHP();
-		session.setAttribute("player", p);
+		session.setAttribute("player", p); */
 		
+		String q = "" + (boolean)session.getAttribute("combat");
 		return (q);
 	}
 

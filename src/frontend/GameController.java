@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import characterclasses.Player;
+import combat.InCombat;
 import database.Account;
 import database.AccountDao;
 import database.PlayerDao;
@@ -93,7 +94,12 @@ public class GameController {
 		if (!result.hasErrors()) {
 			session.setAttribute("account", accountpw);
 			model.addAttribute(accountpw);
-			if(accountpw.getPlayer()!=null){session.setAttribute("player", accountpw.getPlayer());}
+			if(accountpw.getPlayer()!=null){
+				session.setAttribute("player", accountpw.getPlayer());
+				InCombat z = new InCombat(true);
+				session.setAttribute("combat", z);
+				}
+			
 			return "redirect:/welcome";
 		} else {
 			System.out.println("test");

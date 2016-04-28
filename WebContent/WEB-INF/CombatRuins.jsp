@@ -44,7 +44,7 @@ log out
   <div>
     <p>
     <button><input type = "button" value = "stab" id="stab_btn"></button>
-        <button><input type = "button" value = "player" id="player_btn"></button>
+    <button><input type = "button" value = "player" id="player_btn"></button>
     <button>Slash</button>
     <a href="<c:url value="/map"/>">Bash</a>
     <ab1>ownage</ab1>
@@ -59,16 +59,8 @@ log out
   <h3>Magic</h3>
   <div>
     <p>
-    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+    <button><input type = "button" value = "pray for holy fire" id="pray_btn"></button>
     </p>
-    <ul>
-      <li>List item one</li>
-      <li>List item two</li>
-      <li>List item three</li>
-    </ul>
   </div>
   <h3>Items</h3>
   <div>
@@ -106,11 +98,18 @@ function player(){
 
 function stab(){
 	
-	$.get("combat/engage", function(data){
-		$("#antwoord").text(data);
-	})
+	$.get("combat/engage", function(data){})
 	$.get("combat/stab", function(data){
-	  	alert(data);
+		$("#antwoord").append(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+
+		});
+}
+
+function pray(){
+	
+	$.get("combat/engage", function(data){})
+	$.get("combat/pray", function(data){
 		$("#antwoord").append(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 
@@ -119,6 +118,7 @@ function stab(){
 
 $(document).ready(function(){
 	$('#stab_btn').click(stab);
+	$('#pray_btn').click(pray);
 	$('#defend_btn').click(defend);
 	$('#player_btn').click(player);
 });
