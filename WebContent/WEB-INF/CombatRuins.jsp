@@ -55,7 +55,9 @@ log out
   <h3>Attack</h3>
   <div>
     <p>
-    <button><input type = "button" value = "stab" id="stab_btn"></button>
+    <button><input type = "button" value = "Stab" id="stab_btn"></button>
+    <button><input type = "button" value = "Bash" id="bash_btn"></button>
+    <button><input type = "button" value = "Slash" id="slash_btn"></button>
     </p>
   </div>
   <h3>Defend</h3>
@@ -67,6 +69,9 @@ log out
   <h3>Magic</h3>
   <div>
     <p>
+    <button><input type = "button" value = "Read Mind" id="readmind_btn"></button>
+    <button><input type = "button" value = "Fireball" id="fireball_btn"></button>
+    <button><input type = "button" value = "Ice Spike" id="icespike_btn"></button>
     <button><input type = "button" value = "pray for holy fire" id="pray_btn"></button>
     </p>
   </div>
@@ -111,6 +116,25 @@ function stab(){
 		});
 }
 
+function slash(){
+	
+	$.get("combat/slash", function(data){
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+		});
+}
+function bash(){
+	
+	$.get("combat/bash", function(data){
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+		});
+}
+
 function defend(){
 	
 	$.get("combat/defend", function(data){
@@ -120,7 +144,6 @@ function defend(){
 
 function pray(){
 	
-	
 	$.get("combat/pray", function(data){
 		if (data.winner){window.location = "winner"}
 		if (data.loser){window.location = "loser"}
@@ -129,9 +152,45 @@ function pray(){
 		});
 }
 
+function fireball(){
+	
+	$.get("combat/fireball", function(data){
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+		});
+}
+
+function readmind(){
+	
+	$.get("combat/mindread", function(data){
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+		});
+}
+
+function icespike(){
+	
+	$.get("combat/icespike", function(data){
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+		});
+}
+
+
 $(document).ready(function(){
 	$('#stab_btn').click(stab);
+	$('#slash_btn').click(slash);
+	$('#bash_btn').click(bash);
 	$('#pray_btn').click(pray);
+	$('#icespike_btn').click(icespike);
+	$('#fireball_btn').click(fireball);
+	$('#readmind_btn').click(readmind);
 	$('#defend_btn').click(defend);
 	$('#e1_btn').click(target1);
 	$('#e2_btn').click(target2);

@@ -61,17 +61,51 @@ public class CombatEvolved {
 	public CombatOutcome stab(HttpSession session){
 		CombatOutcome c = new CombatOutcome();
 		c = Attacks.piercingAtk(session);
-			
+		return (c);
+	}
+	
+	@RequestMapping("slash")
+	public CombatOutcome slash(HttpSession session){
+		CombatOutcome c = new CombatOutcome();
+		c = Attacks.slashingAtk(session);
+		return (c);
+	}
+	
+	@RequestMapping("bash")
+	public CombatOutcome bash(HttpSession session){
+		CombatOutcome c = new CombatOutcome();
+		c = Attacks.bashingAtk(session);
 		return (c);
 	}
 
 	@RequestMapping("pray")
 	public CombatOutcome pray(HttpSession session){
-		/*if(session.getAttribute("combat") == null){engage(session);}
-		InCombat combatcheck = (InCombat)session.getAttribute("combat");
-		if(!(combatcheck.isInCombat())){engage(session);}*/
 		CombatOutcome c = new CombatOutcome();
 		c = Magic.HolyPrayer(session);
+			
+		return (c);
+	}
+	
+	@RequestMapping("fireball")
+	public CombatOutcome fireball(HttpSession session){
+		CombatOutcome c = new CombatOutcome();
+		c = Magic.Fireball(session);
+			
+		return (c);
+	}
+	
+	@RequestMapping("icespike")
+	public CombatOutcome icespike(HttpSession session){
+		CombatOutcome c = new CombatOutcome();
+		c = Magic.IceSpike(session);
+			
+		return (c);
+	}
+	
+	@RequestMapping("mindread")
+	public CombatOutcome mindread(HttpSession session){
+		CombatOutcome c = new CombatOutcome();
+		c = Magic.MindRead(session);
 			
 		return (c);
 	}
