@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import characterclasses.Character;
 import characterclasses.Player;
 
+import combat.Target;
+
 
 /*
  * 
@@ -71,19 +73,20 @@ public class CombatCore {
 		else {return 0;}
 	}
 	
-	protected static Character Targetting(int t, HttpSession session){
+	protected static Character Targetting(HttpSession session){
 		Character target;
-		
+		Target ta = (Target)session.getAttribute("target");
+		int t = ta.getTarget();
 		switch(t){
 		
 			case 1: 
 				target = (Character)session.getAttribute("Enemy 1");
 				break;
 			case 2:
-				target = (Character)session.getAttribute("Enemy 1");
+				target = (Character)session.getAttribute("Enemy 2");
 				break;
 			case 3:
-				target = (Character)session.getAttribute("Enemy 1");
+				target = (Character)session.getAttribute("Enemy 3");
 				break;
 			default:
 				target = null;
@@ -95,7 +98,9 @@ public class CombatCore {
 		
 	}
 	
-	protected static void ApplyDMG(int t, Character c, HttpSession session){
+	protected static void ApplyDMG(Character c, HttpSession session){
+		Target ta = (Target)session.getAttribute("target");
+		int t = ta.getTarget();
 		switch(t){
 		
 			case 1: 
