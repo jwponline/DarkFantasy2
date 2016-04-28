@@ -85,6 +85,7 @@ log out
   <div>
     <p>
     <button><input type = "button" value = "Inspect" id="inspect_btn"></button>
+    <button><input type = "button" value = "Nuke the site from orit" id="nuke_btn"></button>
     </p>
   </div>
 </div>
@@ -197,6 +198,9 @@ function inspect(){
 		});
 }
 
+function nuke(){
+	window.location = "nuke"
+}
 
 $(document).ready(function(){
 	$('#stab_btn').click(stab);
@@ -208,6 +212,7 @@ $(document).ready(function(){
 	$('#readmind_btn').click(readmind);
 	$('#defend_btn').click(defend);
 	$('#inspect_btn').click(inspect);
+	$('#nuke_btn').click(nuke);
 	$('#e1_btn').click(target1);
 	$('#e2_btn').click(target2);
 	$('#e3_btn').click(target3);
