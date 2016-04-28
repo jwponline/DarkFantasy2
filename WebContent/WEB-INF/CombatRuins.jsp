@@ -33,6 +33,7 @@ log out
 </menu>
 
 <div class="jumbotron">
+<h2>You encounter enemies!</h2>
 <txtoutput class="lead">
 <%---Here goes the flavour text: <%= TempMain.main()%> --%>
 <span id="antwoord"></span>
