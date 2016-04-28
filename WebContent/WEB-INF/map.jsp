@@ -23,14 +23,15 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <style>
+  <!-- <style>
 <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
 	<style>
   .ui-progressbar {
     position: relative;
-    background-color: red;
-    color: red;
+  }
+  .ui-progressbar-value{
+  	background: rgb(255,0,0);
   }
   .progress-label {
     position: absolute;
@@ -44,7 +45,7 @@
   $(function() {
 	  var currentHP = ${player.currentHP};
 	  var maxHP = ${player.maxHP};
-	  var healthpercentage = 100 * currentHP / maxHP;
+	  var healthpercentage = 100 * currentHP / maxHP - 1;
     var progressbar = $( "#progressbar" ),
       progressLabel = $( ".progress-label" );
  
@@ -62,9 +63,13 @@
       var val = progressbar.progressbar( "value" ) || 0;
  
       progressbar.progressbar( "value", val + 1 );
- 
+ 		
       if ( val < healthpercentage ) {
-        setTimeout( progress, 80 );
+    	  var red = 255 - (val * 255)/100;
+    	  var yellow = (val * 255)/100 - 1;
+    	  var blue = (val * 255)/100 - 1;
+        setTimeout( progress, 40 );
+        progressbarValue.css({"background": "rgb(" + red + ", " + yellow + ", " + blue + ")"});
       }
     }
  
