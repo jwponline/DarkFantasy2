@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import characterclasses.Character;
 import characterclasses.Player;
 
+import combat.Target;
+
 
 /*
  * 
@@ -31,9 +33,9 @@ public class CombatCore {
 		
 		int totalEnemyHP = Enemy1.getCurrentHP() + Enemy2.getCurrentHP() + Enemy3.getCurrentHP();
 		if (totalEnemyHP > 0) {
-			d = TheyAttack(p, Enemy1, sb);
-			e = TheyAttack(p, Enemy2, sb);
-			f = TheyAttack(p, Enemy3, sb);
+			d = TheyAttack(p, Enemy1, sb, c);
+			e = TheyAttack(p, Enemy2, sb, c);
+			f = TheyAttack(p, Enemy3, sb, c);
 		}
 		
 		session.setAttribute("player", p); 		//sets player hp to session
@@ -41,10 +43,12 @@ public class CombatCore {
 		c.setPlayerHpLoss(d+e+f);
 		c.setEnemyDescription(sb.toString());
 		
+		c.setWinner(youWin(Enemy1, Enemy2, Enemy3));
+		
 		return c;
 	}
 	
-	protected static int TheyAttack(Player p, Character e, StringBuilder sb){
+	protected static int TheyAttack(Player p, Character e, StringBuilder sb, CombatOutcome c){
 		if(e.getCurrentHP() > 0){
 			if (p.getCurrentHP() > 0){
 				sb.append(e.getAttackDescription());
@@ -57,6 +61,7 @@ public class CombatCore {
 				if (newHealth <= 0) {
 					newHealth = 0;
 					p.setCurrentHP(newHealth);
+					c.setLoser(true);
 					return dmg;
 				}
 	
@@ -71,19 +76,20 @@ public class CombatCore {
 		else {return 0;}
 	}
 	
-	protected static Character Targetting(int t, HttpSession session){
+	protected static Character Targetting(HttpSession session){
 		Character target;
-		
+		Target ta = (Target)session.getAttribute("target");
+		int t = ta.getTarget();
 		switch(t){
 		
 			case 1: 
 				target = (Character)session.getAttribute("Enemy 1");
 				break;
 			case 2:
-				target = (Character)session.getAttribute("Enemy 1");
+				target = (Character)session.getAttribute("Enemy 2");
 				break;
 			case 3:
-				target = (Character)session.getAttribute("Enemy 1");
+				target = (Character)session.getAttribute("Enemy 3");
 				break;
 			default:
 				target = null;
@@ -95,7 +101,9 @@ public class CombatCore {
 		
 	}
 	
-	protected static void ApplyDMG(int t, Character c, HttpSession session){
+	protected static void ApplyDMG(Character c, HttpSession session){
+		Target ta = (Target)session.getAttribute("target");
+		int t = ta.getTarget();
 		switch(t){
 		
 			case 1: 
@@ -111,6 +119,16 @@ public class CombatCore {
 				System.out.println("targetting system got a input that was not 1 2 or 3 that also went wrong with apply dmg");
 				break;
 		}
+	}
+	
+	protected static boolean youWin(Character enemy1, Character enemy2, Character enemy3){
+		boolean winner = false;
+		
+		if (enemy1.getCurrentHP() < 1 && enemy2.getCurrentHP() < 1 && enemy3.getCurrentHP() < 1){
+			winner = true;
+		}
+		
+		return winner;
 	}
 	
 	protected static double calcNPCDMGMod(ArrayList<String> atktypes, Player Defender) {

@@ -12,8 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import characterclasses.GreaterDemon;
+import characterclasses.Imp;
+import characterclasses.NPC;
+import characterclasses.PatheticDemonologist;
 import characterclasses.Player;
 import combat.InCombat;
+import combat.Target;
 import database.Account;
 import database.AccountDao;
 import database.PlayerDao;
@@ -134,9 +139,31 @@ public class GameController {
 		return "map";
 	}
 	
-	@RequestMapping(value="/Ruins", method=RequestMethod.GET)
-	public String CombatRuins(HttpSession s){
+	@RequestMapping(value="/winner", method=RequestMethod.GET)
+	public String winner(HttpSession s){
 		if(!SessionCheck(s)){return "redirect:/";}
+		return "winner";
+	}
+	
+	@RequestMapping(value="/loser", method=RequestMethod.GET)
+	public String loser(HttpSession s){
+		if(!SessionCheck(s)){return "redirect:/";}
+		return "loser";
+	}
+	
+	@RequestMapping(value="/Ruins", method=RequestMethod.GET)
+	public String CombatRuins(HttpSession session){
+		if(!SessionCheck(session)){return "redirect:/";}
+		NPC q = new GreaterDemon("O'crap", "Greater Demon", 80, 80, 20);
+		NPC r = new Imp("hctiB'elttiL", "Imp", 25, 25, 10);
+		NPC s = new PatheticDemonologist("Alfred", "Cult leader", 55, 55, 15);
+		InCombat z = new InCombat(true);
+		Target t = new Target(1);
+		session.setAttribute("target", t);
+		session.setAttribute("combat", z);
+		session.setAttribute("Enemy 1", q);
+		session.setAttribute("Enemy 2", r);
+		session.setAttribute("Enemy 3", s);
 		return "CombatRuins";
 	}
 	

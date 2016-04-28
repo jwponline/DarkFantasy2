@@ -6,12 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import characterclasses.Character;
 import characterclasses.Player;
-import turnbasedcombat.PlayerDeath;
+
 
 public class Magic {
 
 	public static CombatOutcome MagicResolved(ArrayList<String> atkTypes, Player p, Character Defender,
-			CombatOutcome c, int spellDMG, int t, HttpSession session) {
+			CombatOutcome c, int spellDMG, HttpSession session) {
 		int Health = Defender.getCurrentHP();
 		int dmg = (int) Math.round(spellDMG * CombatCore.calcPlayerDMGMod(atkTypes, Defender));
 		Health -= dmg;
@@ -25,7 +25,7 @@ public class Magic {
 		}
 		
 		Defender.setCurrentHP(Health);
-		CombatCore.ApplyDMG(t, Defender, session);
+		CombatCore.ApplyDMG(Defender, session);
 		
 		c = CombatCore.TheirTurn(p, c, session);
 		
@@ -33,15 +33,15 @@ public class Magic {
 		
 	}
 	
-	public static CombatOutcome HolyPrayer(int t, HttpSession session) {
+	public static CombatOutcome HolyPrayer(HttpSession session) {
 
 		CombatOutcome c = new CombatOutcome();
 		
 		Player p = (Player)session.getAttribute("player");
-		Character Defender = CombatCore.Targetting(t, session);
+		Character Defender = CombatCore.Targetting(session);
 		
 		if (Defender.getCurrentHP() <= 0) {
-			System.out.println("You pray for the ressurection of the " + Defender.getProfession()
+			c.setPlayerDescription("You pray for the ressurection of the " + Defender.getProfession()
 					+ ". So you may kill it again. Sadly your prayers go unanswered.");
 		} else {
 			int spellDMG = 60;
@@ -52,7 +52,7 @@ public class Magic {
 			c.setPlayerDescription("You say a prayer to the great god Imhotep and he bathes the "
 					+ Defender.getProfession() + " in holy fire.");
 
-			MagicResolved(atkTypes, p, Defender, c, spellDMG, t, session);
+			MagicResolved(atkTypes, p, Defender, c, spellDMG, session);
 			
 		}
 		

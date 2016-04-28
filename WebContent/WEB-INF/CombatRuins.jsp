@@ -40,14 +40,18 @@ log out
 
 
 <div id="accordion">
+  <h3>Target selection</h3>
+  <div>
+    <p>
+    <button><input type = "button" value = "Greater Deamon" id="e1_btn"></button>
+    <button><input type = "button" value = "Imp" id="e2_btn"></button>
+    <button><input type = "button" value = "Cultist" id="e3_btn"></button>
+    </p>
+  </div>
   <h3>Attack</h3>
   <div>
     <p>
     <button><input type = "button" value = "stab" id="stab_btn"></button>
-    <button><input type = "button" value = "player" id="player_btn"></button>
-    <button>Slash</button>
-    <a href="<c:url value="/map"/>">Bash</a>
-    <ab1>ownage</ab1>
     </p>
   </div>
   <h3>Defend</h3>
@@ -65,21 +69,43 @@ log out
   <h3>Items</h3>
   <div>
     <p>
-    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-    mauris vel est.
-    </p>
-    <p>
-    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-    inceptos himenaeos.
+    Your bags are empty! You poor bastard! 
     </p>
   </div>
 </div>
 
 
 <script>
+
+function target1(){
+	
+	$.get("combat/target1", function(data){
+		$("#antwoord").text("You look at the " + data + " and prepare to strike.");
+	});
+}
+
+function target2(){
+	
+	$.get("combat/target2", function(data){
+		$("#antwoord").text("You look at the " + data + " and prepare to strike.");
+	});
+}
+function target3(){
+	
+	$.get("combat/target3", function(data){
+		$("#antwoord").text("You look at the " + data + " and prepare to strike.");
+	});
+}
+
+function stab(){
+	
+	$.get("combat/stab", function(data){
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+		});
+}
 
 function defend(){
 	
@@ -88,31 +114,14 @@ function defend(){
 	});
 }
 
-function player(){
-	
-	$.get("combat/player", function(data){
-		alert(data);
-		$("#antwoord").text(data);
-	});
-}
-
-function stab(){
-	
-	$.get("combat/engage", function(data){})
-	$.get("combat/stab", function(data){
-		$("#antwoord").append(data.playerDescription);
-		$("#antwoord").append(data.enemyDescription);
-
-		});
-}
-
 function pray(){
 	
-	$.get("combat/engage", function(data){})
+	
 	$.get("combat/pray", function(data){
-		$("#antwoord").append(data.playerDescription);
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
-
 		});
 }
 
@@ -120,7 +129,10 @@ $(document).ready(function(){
 	$('#stab_btn').click(stab);
 	$('#pray_btn').click(pray);
 	$('#defend_btn').click(defend);
-	$('#player_btn').click(player);
+	$('#e1_btn').click(target1);
+	$('#e2_btn').click(target2);
+	$('#e3_btn').click(target3);
+	
 });
 
 </script>

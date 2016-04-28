@@ -9,11 +9,11 @@ import characterclasses.Player;
 public class Attacks {
 
 	
-	public static CombatOutcome piercingAtk(int t, HttpSession session) {
+	public static CombatOutcome piercingAtk(HttpSession session) {
 		CombatOutcome c = new CombatOutcome();
 		
 		Player p = (Player)session.getAttribute("player");
-		Character Defender = CombatCore.Targetting(t, session);
+		Character Defender = CombatCore.Targetting(session);
 				
 		int Health = Defender.getCurrentHP();
 		
@@ -39,7 +39,7 @@ public class Attacks {
 		}
 		
 		Defender.setCurrentHP(Health);
-		CombatCore.ApplyDMG(t, Defender, session);
+		CombatCore.ApplyDMG(Defender, session);
 		
 		c = CombatCore.TheirTurn(p, c, session);
 		

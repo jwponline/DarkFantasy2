@@ -7,12 +7,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import characterclasses.Character;
 import characterclasses.GreaterDemon;
 import characterclasses.Imp;
 import characterclasses.NPC;
 import characterclasses.PatheticDemonologist;
 import characterclasses.Player;
-import combat.*;
+import combat.Attacks;
+import combat.CombatOutcome;
+import combat.InCombat;
+import combat.Magic;
+import combat.Target;
 
 @RestController
 @RequestMapping("/combat")
@@ -54,24 +59,19 @@ public class CombatEvolved {
 	
 	@RequestMapping("stab")
 	public CombatOutcome stab(HttpSession session){
-		if(session.getAttribute("combat") == null){engage(session);}
-		InCombat combatcheck = (InCombat)session.getAttribute("combat");
-		if(!(combatcheck.isInCombat())){engage(session);}
 		CombatOutcome c = new CombatOutcome();
-		int target = 1;
-		c = Attacks.piercingAtk(target, session);
+		c = Attacks.piercingAtk(session);
 			
 		return (c);
 	}
 
 	@RequestMapping("pray")
 	public CombatOutcome pray(HttpSession session){
-		if(session.getAttribute("combat") == null){engage(session);}
+		/*if(session.getAttribute("combat") == null){engage(session);}
 		InCombat combatcheck = (InCombat)session.getAttribute("combat");
-		if(!(combatcheck.isInCombat())){engage(session);}
+		if(!(combatcheck.isInCombat())){engage(session);}*/
 		CombatOutcome c = new CombatOutcome();
-		int target = 1;
-		c = Magic.HolyPrayer(target, session);
+		c = Magic.HolyPrayer(session);
 			
 		return (c);
 	}
@@ -93,6 +93,32 @@ public class CombatEvolved {
 		String q = "" + (boolean)session.getAttribute("combat");
 		return (q);
 	}
+	
+	@RequestMapping("target1")
+	public String target1(HttpSession session){
+		Target target = new Target(1);
+		session.setAttribute("target", target);
+		Character p = (Character)session.getAttribute("Enemy 1");
+		String q = p.getProfession();
+		return q;
+	}
 
+	@RequestMapping("target2")
+	public String target2(HttpSession session){
+		Target target = new Target(2);
+		session.setAttribute("target", target);
+		NPC p = (NPC)session.getAttribute("Enemy 2");
+		String q = p.getProfession();
+		return q;
+	}
+	
+	@RequestMapping("target3")
+	public String target3(HttpSession session){
+		Target target = new Target(3);
+		session.setAttribute("target", target);
+		Character p = (Character)session.getAttribute("Enemy 3");
+		String q = p.getProfession();
+		return q;
+	}
 	
 }
