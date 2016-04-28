@@ -101,6 +101,7 @@ function stab(){
 	
 	$.get("combat/stab", function(data){
 		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -118,6 +119,7 @@ function pray(){
 	
 	$.get("combat/pray", function(data){
 		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});

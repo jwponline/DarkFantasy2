@@ -33,9 +33,9 @@ public class CombatCore {
 		
 		int totalEnemyHP = Enemy1.getCurrentHP() + Enemy2.getCurrentHP() + Enemy3.getCurrentHP();
 		if (totalEnemyHP > 0) {
-			d = TheyAttack(p, Enemy1, sb);
-			e = TheyAttack(p, Enemy2, sb);
-			f = TheyAttack(p, Enemy3, sb);
+			d = TheyAttack(p, Enemy1, sb, c);
+			e = TheyAttack(p, Enemy2, sb, c);
+			f = TheyAttack(p, Enemy3, sb, c);
 		}
 		
 		session.setAttribute("player", p); 		//sets player hp to session
@@ -48,7 +48,7 @@ public class CombatCore {
 		return c;
 	}
 	
-	protected static int TheyAttack(Player p, Character e, StringBuilder sb){
+	protected static int TheyAttack(Player p, Character e, StringBuilder sb, CombatOutcome c){
 		if(e.getCurrentHP() > 0){
 			if (p.getCurrentHP() > 0){
 				sb.append(e.getAttackDescription());
@@ -61,6 +61,7 @@ public class CombatCore {
 				if (newHealth <= 0) {
 					newHealth = 0;
 					p.setCurrentHP(newHealth);
+					c.setLoser(true);
 					return dmg;
 				}
 	

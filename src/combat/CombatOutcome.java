@@ -7,6 +7,7 @@ public class CombatOutcome {
 	private int playerHpLoss;
 	private int enemyHpLoss;
 	private boolean winner;
+	private boolean loser;
 	
 	
 	public String getPlayerDescription() {
@@ -38,6 +39,12 @@ public class CombatOutcome {
 	}
 	public void setWinner(boolean winner) {
 		this.winner = winner;
+	}
+	public boolean isLoser() {
+		return loser;
+	}
+	public void setLoser(boolean loser) {
+		this.loser = loser;
 	}
 	
 	
