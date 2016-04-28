@@ -81,6 +81,12 @@ log out
     Your bags are empty! You poor bastard! 
     </p>
   </div>
+    <h3>Special</h3>
+  <div>
+    <p>
+    <button><input type = "button" value = "Inspect" id="inspect_btn"></button>
+    </p>
+  </div>
 </div>
 
 
@@ -182,6 +188,15 @@ function icespike(){
 		});
 }
 
+function inspect(){
+	
+	$.get("combat/inspect", function(data){
+		if (data.winner){window.location = "winner"}
+		if (data.loser){window.location = "loser"}
+		$("#antwoord").text(data.playerDescription);
+		});
+}
+
 
 $(document).ready(function(){
 	$('#stab_btn').click(stab);
@@ -192,6 +207,7 @@ $(document).ready(function(){
 	$('#fireball_btn').click(fireball);
 	$('#readmind_btn').click(readmind);
 	$('#defend_btn').click(defend);
+	$('#inspect_btn').click(inspect);
 	$('#e1_btn').click(target1);
 	$('#e2_btn').click(target2);
 	$('#e3_btn').click(target3);

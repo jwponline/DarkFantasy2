@@ -18,6 +18,7 @@ import combat.CombatOutcome;
 import combat.InCombat;
 import combat.Magic;
 import combat.Target;
+import combat.SpecialMoves;
 
 @RestController
 @RequestMapping("/combat")
@@ -106,6 +107,14 @@ public class CombatEvolved {
 	public CombatOutcome mindread(HttpSession session){
 		CombatOutcome c = new CombatOutcome();
 		c = Magic.MindRead(session);
+			
+		return (c);
+	}
+	
+	@RequestMapping("inspect")
+	public CombatOutcome inspect(HttpSession session){
+		CombatOutcome c = new CombatOutcome();
+		c = SpecialMoves.Inspect(session);
 			
 		return (c);
 	}
