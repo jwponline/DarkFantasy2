@@ -52,7 +52,9 @@
 <div id="progressbar"><div class="progress-label">Loading...</div></div>	
 <txtoutput class="lead">
 <%---Here goes the flavour text: <%= TempMain.main()%> --%>
-<span id="antwoord"></span>
+<div><span id="nuke"></span></div>
+
+<div><span id="antwoord"></span></div>
 </txtoutput>
 </div>
 
@@ -265,7 +267,10 @@ function inspect(){
 }
 
 function nuke(){
-	window.location = "nuke"
+	$("#nuke").prepend('<img id="Nukeit" src="<c:url value="/resources/Nukeit.jpg"/>" style="width:50%;height:50%;" />');
+	$("#antwoord").text("As you give the command, you are quickly whisked away. The large orbital bombardment platform, high above the planet whirs to live, and opens fire."
+			+ "The enemies that were arrayed before you are quickly reduced to ash and all is well in the world. Well for you anyway the innocent village 2 miles away isnt as lucky, neither is the city 10 miles from that."
+			+ "Many puppies, kittens, and children were harmed in nuking it all from orbit.")
 }
 
 $(document).ready(function(){
