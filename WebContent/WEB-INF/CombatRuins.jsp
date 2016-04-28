@@ -191,8 +191,8 @@ function target3(){
 function stab(){
 	
 	$.get("combat/stab", function(data){
-		if (data.winner){window.location = "winner"}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -202,8 +202,8 @@ function stab(){
 function slash(){
 	
 	$.get("combat/slash", function(data){
-		if (data.winner){window.location = "winner"}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -212,8 +212,8 @@ function slash(){
 function bash(){
 	
 	$.get("combat/bash", function(data){
-		if (data.winner){window.location = "winner"}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -231,8 +231,8 @@ function defend(){
 function pray(){
 	
 	$.get("combat/pray", function(data){
-		if (data.winner){alert("winner")}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -243,8 +243,8 @@ function pray(){
 function fireball(){
 	
 	$.get("combat/fireball", function(data){
-		if (data.winner){window.location = "winner"}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -254,8 +254,8 @@ function fireball(){
 function readmind(){
 	
 	$.get("combat/mindread", function(data){
-		if (data.winner){window.location = "winner"}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -265,8 +265,8 @@ function readmind(){
 function icespike(){
 	
 	$.get("combat/icespike", function(data){
-		if (data.winner){window.location = "winner"}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
@@ -276,8 +276,8 @@ function icespike(){
 function inspect(){
 	
 	$.get("combat/inspect", function(data){
-		if (data.winner){alert("winner")}
-		if (data.loser){window.location = "loser"}
+		if (data.winner){alert("You win, you can now relog and do it again with your head held high!")}
+		if (data.loser){alert("You died a painfull death, wish to avert your fate? Relog and try again!")}
 		$("#antwoord").text(data.playerDescription);
 		});
 	progress;
