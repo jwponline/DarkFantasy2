@@ -139,6 +139,12 @@ public class GameController {
 		return "map";
 	}
 	
+	@RequestMapping(value="/winner", method=RequestMethod.GET)
+	public String winner(HttpSession s){
+		if(!SessionCheck(s)){return "redirect:/";}
+		return "winner";
+	}
+	
 	@RequestMapping(value="/Ruins", method=RequestMethod.GET)
 	public String CombatRuins(HttpSession session){
 		if(!SessionCheck(session)){return "redirect:/";}

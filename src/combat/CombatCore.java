@@ -43,6 +43,8 @@ public class CombatCore {
 		c.setPlayerHpLoss(d+e+f);
 		c.setEnemyDescription(sb.toString());
 		
+		c.setWinner(youWin(Enemy1, Enemy2, Enemy3));
+		
 		return c;
 	}
 	
@@ -116,6 +118,16 @@ public class CombatCore {
 				System.out.println("targetting system got a input that was not 1 2 or 3 that also went wrong with apply dmg");
 				break;
 		}
+	}
+	
+	protected static boolean youWin(Character enemy1, Character enemy2, Character enemy3){
+		boolean winner = false;
+		
+		if (enemy1.getCurrentHP() < 1 && enemy2.getCurrentHP() < 1 && enemy3.getCurrentHP() < 1){
+			winner = true;
+		}
+		
+		return winner;
 	}
 	
 	protected static double calcNPCDMGMod(ArrayList<String> atktypes, Player Defender) {

@@ -52,7 +52,6 @@ log out
   <div>
     <p>
     <button><input type = "button" value = "stab" id="stab_btn"></button>
-    <button><input type = "button" value = "engage" id="engage_btn"></button>
     </p>
   </div>
   <h3>Defend</h3>
@@ -98,6 +97,15 @@ function target3(){
 	});
 }
 
+function stab(){
+	
+	$.get("combat/stab", function(data){
+		if (data.winner){window.location = "winner"}
+		$("#antwoord").text(data.playerDescription);
+		$("#antwoord").append(data.enemyDescription);
+		});
+}
+
 function defend(){
 	
 	$.get("combat/defend", function(data){
@@ -105,27 +113,13 @@ function defend(){
 	});
 }
 
-function engage(){
-	
-	$.get("combat/engage", function(data){$("#antwoord").text("session created");})
-}
-
-function stab(){
-	
-	$.get("combat/stab", function(data){
-		$("#antwoord").text(data.playerDescription);
-		$("#antwoord").append(data.enemyDescription);
-
-		});
-}
-
 function pray(){
 	
 	
 	$.get("combat/pray", function(data){
+		if (data.winner){window.location = "winner"}
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
-
 		});
 }
 
@@ -133,7 +127,6 @@ $(document).ready(function(){
 	$('#stab_btn').click(stab);
 	$('#pray_btn').click(pray);
 	$('#defend_btn').click(defend);
-	$('#engage_btn').click(engage);
 	$('#e1_btn').click(target1);
 	$('#e2_btn').click(target2);
 	$('#e3_btn').click(target3);
