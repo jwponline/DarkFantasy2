@@ -15,7 +15,22 @@
   <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css"/>">
   <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/resources/demos/style.css">-->
   <!-- <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/jumbotron-narrow.css"/>">-->
-   
+   <style>
+  .ui-progressbar {
+    position: relative;
+  }
+  .ui-progressbar-value{
+  	background: rgb(255,0,0);
+  }
+  .progress-label {
+    position: absolute;
+    left: 30%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+  </style>
+  
   <script>
   $(function() {
     $( "#accordion" ).accordion();
@@ -25,15 +40,16 @@
 <body>
 
 <menu>
-Menu:
-<menubutton>Charactersheet</menubutton>
-Inventory
-Map
-log out
+<h3>Menu:</h3>
+<button>Charactersheet</button><br>
+<p>Inventory</p><br>
+<a href="<c:url value="/map"/>">Map</a><br>
+<a href="<c:url value="/logout"/>">log out</a>
 </menu>
 
 <div class="jumbotron" id="jumbotron">
 <h2>You encounter enemies!</h2>
+<div id="progressbar"><div class="progress-label">Loading...</div></div>	
 <txtoutput class="lead">
 <%---Here goes the flavour text: <%= TempMain.main()%> --%>
 <span id="antwoord"></span>
@@ -93,6 +109,46 @@ log out
 
 <script>
 
+    var progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" );
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( "Health: " + progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Full Health!" );
+      }
+    });
+    setTimeout( progress, 2000 );
+
+    function progress() {
+    	
+    var currentHP = ${player.currentHP};
+  	  var maxHP = ${player.maxHP};
+  	  var healthpercentage = 100 * currentHP / maxHP;
+      var val = progressbar.progressbar( "value" ) || 0;
+ 	if(val < healthpercentage){
+      progressbar.progressbar( "value", val + 1 );
+      setTimeout( progress, 40 );
+ 	}
+ 	if(val > healthpercentage + 1){
+ 		progressbar.progressbar( "value", val - 1 );
+ 		setTimeout( progress, 40 );
+ 	}
+ 		
+      if ( val == healthpercentage ) {
+    	  var red = 255 - (val * 255)/100;
+    	  var yellow = (val * 255)/100 - 1;
+    	  var blue = (val * 255)/100 - 1;
+        progressbarValue.css({"background": "rgb(" + red + ", " + yellow + ", " + blue + ")"});
+      }
+      
+    }
+ 
+    
+
 function target1(){
 	
 	$.get("combat/target1", function(data){
@@ -121,6 +177,7 @@ function stab(){
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
+	progress;
 }
 
 function slash(){
@@ -131,6 +188,7 @@ function slash(){
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
+	progress;
 }
 function bash(){
 	
@@ -140,6 +198,7 @@ function bash(){
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
+	progress;
 }
 
 function defend(){
@@ -147,6 +206,7 @@ function defend(){
 	$.get("combat/defend", function(data){
 		$("#antwoord").text(data.playerDescription);
 	});
+	progress();
 }
 
 function pray(){
@@ -157,6 +217,8 @@ function pray(){
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
+	progress();
+	
 }
 
 function fireball(){
@@ -167,6 +229,7 @@ function fireball(){
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
+	progress;
 }
 
 function readmind(){
@@ -177,6 +240,7 @@ function readmind(){
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
+	progress();
 }
 
 function icespike(){
@@ -187,6 +251,7 @@ function icespike(){
 		$("#antwoord").text(data.playerDescription);
 		$("#antwoord").append(data.enemyDescription);
 		});
+	progress;
 }
 
 function inspect(){
@@ -196,6 +261,7 @@ function inspect(){
 		if (data.loser){window.location = "loser"}
 		$("#antwoord").text(data.playerDescription);
 		});
+	progress;
 }
 
 function nuke(){
