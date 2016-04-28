@@ -13,8 +13,8 @@
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css"/>">
-  <link rel="stylesheet" href="http://code.jquery.com/ui/resources/demos/style.css">
-  <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/jumbotron-narrow.css"/>">
+  <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/resources/demos/style.css">-->
+  <!-- <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/jumbotron-narrow.css"/>">-->
    
   <script>
   $(function() {
@@ -32,7 +32,7 @@ Map
 log out
 </menu>
 
-<div class="jumbotron">
+<div class="jumbotron" id="jumbotron">
 <h2>You encounter enemies!</h2>
 <txtoutput class="lead">
 <%---Here goes the flavour text: <%= TempMain.main()%> --%>

@@ -46,6 +46,11 @@ ab1{background: url("Paper.jpg");
 	overflow: auto;
 }
 
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  background: url("Paper.jpg");
+}
 
 .ui-button {
 	background: url("Paper.jpg");
