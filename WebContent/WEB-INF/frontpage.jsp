@@ -31,7 +31,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/DarkFantasyNew/">Dark Fantasy</a>
+				<a class="navbar-brand" href="<c:url value="/"/>">Dark Fantasy</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<form:form class="navbar-form navbar-right" method="post" modelAttribute="Account">
