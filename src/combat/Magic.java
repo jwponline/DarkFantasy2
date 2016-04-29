@@ -118,7 +118,7 @@ public class Magic {
 		Character Defender = CombatCore.Targetting(session);
 		
 		if (Defender.getCurrentHP() <= 0) {
-			c.setPlayerDescription("You terrifying images of the great beyond assail your, and sends you reeling.");
+			c.setPlayerDescription("You terrifying images of the great beyond assail your, and send you reeling.");
 		} else {
 			int spellDMG = 30;
 			ArrayList<String> atkTypes = new ArrayList<String>();
