@@ -286,8 +286,8 @@ function inspect(){
 function nuke(){
 	$("#nuke").prepend('<img id="Nukeit" src="<c:url value="/resources/Nukeit.jpg"/>" style="width:50%;height:50%;" />');
 	$("#antwoord").text("As you give the command, you are quickly whisked away. The large orbital bombardment platform, high above the planet whirs to live, and opens fire."
-			+ "The enemies that were arrayed before you are quickly reduced to ash and all is well in the world. Well for you anyway the innocent village 2 miles away isnt as lucky, neither is the city 10 miles from that."
-			+ "Many puppies, kittens, and children were harmed in nuking it all from orbit. You beat the game!!!!!")
+			+ "The enemies that were arrayed before you are quickly reduced to ash and all is well in the world. Well for you anyway, the innocent village 2 miles away isnt as lucky, neither is the city 10 miles from that."
+			+ "Many puppies, kittens, and children were harmed in nuking it all from orbit, but you did beat the game!!!!! and the demons are most assuredly dead.")
 	
 }
 

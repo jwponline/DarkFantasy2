@@ -48,7 +48,7 @@ public class CombatEvolved {
 		
 		CombatOutcome c = new CombatOutcome();
 		
-		c.setPlayerDescription("The greater demon charges at you, as he swings his sword you quickly sidestep him, and trip him up. The imp claws at you and a quick bash with your shield knocks him into some barrels, "
+		c.setPlayerDescription("The greater demon charges at you, as he swings his sword you quickly sidestep him, and trip him up. The imp claws at you, but a quick bash of your shield knocks him into some barrels, "
 				+ "it's all going quite well until you take a firebolt to the knee, nearly ending your adventuring days. You lose 10 HP.");
 		c.setPlayerHpLoss(10);
 		Player p = (Player)session.getAttribute("player");
